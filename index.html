@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Funnel sans + Bengalfat one -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="index.js"></script>
+</head>
+<body>
+    <ul class="navbar">
+        <li class="navelement">Another Idle Clicker</li>
+    </ul>
+    <div class="header">
+      <div class="counter">Counter: 0</div>
+<button id="cbutton" onclick="counterclick()">
+  <span id="cbuttonfront">Click!</span>
+</button>        
+      <div class="cps">Per Second: 0</div>
+
+    </div>
+
+  <div class="shop">
+    <h1 style="color: white; text-align: center; margin-bottom: 24px;">The Shop</h1>
+<!-- shop item div-->
+        <div class="shopitem" id="autoclicktier1">
+          <div class="shopcontent">
+            <h2>Autoclick Tier 1</h2>
+            <h3>Automatically clicks once per second.</h3>
+            <p>Cost: 20</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyAutoclickTier1()">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shopitem" id="multiplier">
+          <div class="shopcontent">
+            <h2>Multiplier 2x</h2>
+            <h3>Multiplies all clicks by 2x! But only works once!</h3>
+            <p>Cost: 100</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyMultiplier()">Buy</button>   
+          </div>
+        </div>
+  </div>
+</body>
+</html>
