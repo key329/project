@@ -106,6 +106,27 @@ function buyAutoclickTier4() {
     }
 }
 
+//t5 counter//
+async function autoclicktier5() {
+    cps = cps + 25;
+    while (true) {
+    counter ++;
+    updateCounter()
+    await cooldown (40);
+    }
+}
+
+function buyAutoclickTier5() {
+    if (counter >= 2500) {
+        counter = counter - 2500;
+        autoclicktier5();
+        document.querySelector("#autoclicktier5").style.display = "none";
+        upgrades.push("Autoclick Tier 5");
+    } else {
+        alert("Not enough!");
+    }
+}
+
 //multiplier stuff//
 async function multiplier2x() {
     cps = cps;
