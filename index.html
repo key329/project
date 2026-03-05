@@ -18,7 +18,7 @@
   <span id="cbuttonfront">Click!</span>
 </button>        
       <div class="cps">Per Second: 0</div>
-
+      <div class="upgrades">Upgrades:</div>
     </div>
 
   <div class="shop">
@@ -34,15 +34,59 @@
             <button class="shopbutton" onclick="buyAutoclickTier1()">Buy</button>
           </div>
         </div>
+
+        <div class="shopitem" id="autoclicktier2">
+          <div class="shopcontent">
+            <h2>Autoclick Tier 2</h2>
+            <h3>Automatically clicks twice per second.</h3>
+            <p>Cost: 250</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyAutoclickTier2()">Buy</button>
+          </div>
+        </div>
+
+        <div class="shopitem" id="autoclicktier3">
+          <div class="shopcontent">
+            <h2>Autoclick Tier 3</h2>
+            <h3>Automatically clicks seven times per second.</h3>
+            <p>Cost: 500</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyAutoclickTier3()">Buy</button>
+          </div>
+        </div>
+
+        <div class="shopitem" id="autoclicktier4">
+          <div class="shopcontent">
+            <h2>Autoclick Tier 4</h2>
+            <h3>Automatically clicks fifteen times per second.</h3>
+            <p>Cost: 1000</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyAutoclickTier4()">Buy</button>
+          </div>
+        </div>
+
+        <div class="shopitem" id="multiplier11x">
+          <div class="shopcontent">
+            <h2>Multiplier 1.1x</h2>
+            <h3>Multiplies all clicks by 1.1x! Use as many times as you want!</h3>
+            <p>Cost: 250</p>
+          </div>
+          <div class="shopcontent" style="margin">
+            <button class="shopbutton" onclick="buyMultiplier11x()">Buy</button>   
+          </div>
+        </div>
         
-        <div class="shopitem" id="multiplier">
+        <div class="shopitem" id="multiplier2x">
           <div class="shopcontent">
             <h2>Multiplier 2x</h2>
             <h3>Multiplies all clicks by 2x! But only works once!</h3>
             <p>Cost: 100</p>
           </div>
           <div class="shopcontent" style="margin">
-            <button class="shopbutton" onclick="buyMultiplier()">Buy</button>   
+            <button class="shopbutton" onclick="buyMultiplier2x()">Buy</button>   
           </div>
         </div>
   </div>
