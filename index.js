@@ -1,7 +1,8 @@
-let counter = 0;
+let counter = 499990;
 let cps = 0;
 let upgrades = [];
 let upgradelist = "";
+let multiplieruses = 0;
 
 function updateCounter() {
     counter = Math.round(counter);
@@ -9,6 +10,7 @@ function updateCounter() {
     document.querySelector(".cps").innerHTML = "Per Second: " + cps;
     listUpgrades() 
     document.querySelector(".upgrades").innerHTML = "Upgrades: " + upgradelist;
+    document.querySelector(".multiplieruses").innerHTML = "Multiplier Uses: " + multiplieruses;
 }
 
 function listUpgrades() {
@@ -127,44 +129,82 @@ function buyAutoclickTier5() {
     }
 }
 
+//t6 counter//
+async function autoclicktier6() {
+    cps = cps + 50;
+    while (true) {
+    counter ++;
+    updateCounter()
+    await cooldown (20);
+    }
+}
+
+function buyAutoclickTier6() {
+    if (counter >= 5000) {
+        counter = counter - 5000;
+        autoclicktier6();
+        document.querySelector("#autoclicktier6").style.display = "none";
+        upgrades.push("Autoclick Tier 6");
+    } else {
+        alert("Not enough!");
+    }
+}
+
+//t7 counter//
+async function autoclicktier7() {
+    cps = cps + 400;
+    while (true) {
+    counter ++;
+    updateCounter()
+    await cooldown (2.5);
+    }
+}
+
+function buyAutoclickTier7() {
+    if (counter >= 10000) {
+        counter = counter - 10000;
+        autoclicktier7();
+        document.querySelector("#autoclicktier7").style.display = "none";
+        upgrades.push("Autoclick Tier 7");
+        document.querySelector("#endgame").style.display = "block";
+    } else {
+        alert("Not enough!");
+    }
+}
+
+function endgame() {
+    if (counter >= 1000000) {
+        document.querySelector(".endgame").style.display = "flex";
+    }
+}
+
+function buyEndgame() {
+    if (counter >= 1000000) {
+        counter = counter - 1000000;
+        endgame();
+    } else {
+        alert("Not enough!");
+    }
+}
 //multiplier stuff//
 async function multiplier2x() {
     cps = cps;
     counter = counter * 2;
+    multiplieruses = multiplieruses + 1;
     updateCounter()
-
 }
 
 function buyMultiplier2x() {
-    if (counter >= 100) {
-        counter = counter - 100;
-        multiplier();
-        updateCounter();
+    if (multiplieruses > 4) {
         document.querySelector("#multiplier2x").style.display = "none";
-        
-    } else {
-        alert("Not enough!");
-    }
-}
-
-//multiplier 1.1//
-async function multiplier11x() {
-    cps = cps;
-    counter = counter * 1.1;
-    updateCounter()
-
-}
-
-function buyMultiplier11x() {
-    if (counter >= 250) {
-        counter = counter - 250;
-        multiplier11x();
+    } else if (counter >= 500) {
+        counter = counter - 500;
+        multiplier2x();
         updateCounter();
     } else {
         alert("Not enough!");
     }
 }
-
 
 //function that sets up delay/wait for the cooldown, returns the delay//
 function cooldown(ms) {
