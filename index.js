@@ -1,4 +1,4 @@
-let counter = 499990;
+let counter = 0;
 let cps = 0;
 let upgrades = [];
 let upgradelist = "";
