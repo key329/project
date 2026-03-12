@@ -3,7 +3,9 @@ let cps = 0;
 let upgrades = [];
 let upgradelist = "";
 let multiplieruses = 0;
-
+//sound from https://sfxengine.com/sound-effects/celebration//
+var congrats = new Audio('congrats.wav');
+//update screen/everything//
 function updateCounter() {
     counter = Math.round(counter);
     document.querySelector(".counter").innerHTML = "Counter: " + counter;
@@ -13,6 +15,7 @@ function updateCounter() {
     document.querySelector(".multiplieruses").innerHTML = "Multiplier Uses: " + multiplieruses;
 }
 
+//formats upgrade list into one thing//
 function listUpgrades() {
     upgradelist = "";
     for (let i = 0; i < upgrades.length; i++) { 
@@ -160,28 +163,47 @@ async function autoclicktier7() {
     }
 }
 
-function buyAutoclickTier7() {
+async function buyAutoclickTier7() {
     if (counter >= 10000) {
         counter = counter - 10000;
         autoclicktier7();
         document.querySelector("#autoclicktier7").style.display = "none";
         upgrades.push("Autoclick Tier 7");
-        document.querySelector("#endgame").style.display = "block";
+        document.querySelector("#endgame").style.display = "flex";
     } else {
         alert("Not enough!");
     }
 }
-
-function endgame() {
+//ends the game function//
+async function endGame(upgrades, cps, multiplieruses, counter) {
     if (counter >= 1000000) {
-        document.querySelector(".endgame").style.display = "flex";
-    }
-}
-
-function buyEndgame() {
-    if (counter >= 1000000) {
+        //inital alert with stats//
         counter = counter - 1000000;
-        endgame();
+        alert(`Game Complete!\n\nFinal Counter: ${Math.round(counter)}\nCPS: ${cps}\nUpgrades Purchased: ${upgrades}\nMultiplier Uses: ${multiplieruses}`);
+        ////end screen stuff//
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        const endscreen = document.createElement("div");
+        endscreen.style.position = "fixed";
+        endscreen.style.inset = "0";
+        endscreen.style.display = "flex";
+        endscreen.style.alignItems = "center";
+        endscreen.style.justifyContent = "center";
+        endscreen.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+        endscreen.style.zIndex = "9999";
+        endscreen.style.fontSize = "36px";
+        endscreen.style.textAlign = "center";
+        endscreen.style.padding = "36px";
+        endscreen.innerText = "🎉 Congratulations! You beat the game! Refresh to play again.! 🎉";
+        document.body.appendChild(endscreen);
+        //looping audio clapping//
+        let plays = 0;
+        while (plays < 5) {
+            congrats.currentTime = 0;
+            congrats.play();
+            await cooldown(10000);
+            plays++;
+        }
     } else {
         alert("Not enough!");
     }
@@ -192,12 +214,13 @@ async function multiplier2x() {
     counter = counter * 2;
     multiplieruses = multiplieruses + 1;
     updateCounter()
+    if (multiplieruses > 4) {
+        document.querySelector("#multiplier2x").style.display = "none";
+    }
 }
 
 function buyMultiplier2x() {
-    if (multiplieruses > 4) {
-        document.querySelector("#multiplier2x").style.display = "none";
-    } else if (counter >= 500) {
+    if (counter >= 500) {
         counter = counter - 500;
         multiplier2x();
         updateCounter();
@@ -206,7 +229,7 @@ function buyMultiplier2x() {
     }
 }
 
-//function that sets up delay/wait for the cooldown, returns the delay//
+//delay function, returns delay in ms//
 function cooldown(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
