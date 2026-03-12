@@ -9,7 +9,7 @@ var congrats = new Audio('congrats.wav');
 //update screen/everything function//
 function updateCounter() {
     counter = Math.round(counter);
-    document.querySelector(".counter").innerHTML = "Counter: " + counter;
+    document.querySelector(".counter").innerHTML = "Counter: " + counter;m, 
     document.querySelector(".cps").innerHTML = "Per Second: " + cps;
     listUpgrades() 
     document.querySelector(".upgrades").innerHTML = "Upgrades: " + upgradelist;
