@@ -5,7 +5,8 @@ let upgradelist = "";
 let multiplieruses = 0;
 //sound from https://sfxengine.com/sound-effects/celebration//
 var congrats = new Audio('congrats.wav');
-//update screen/everything//
+
+//update screen/everything function//
 function updateCounter() {
     counter = Math.round(counter);
     document.querySelector(".counter").innerHTML = "Counter: " + counter;
@@ -23,6 +24,7 @@ function listUpgrades() {
     }
 }
 
+//button click/counter function//
 async function counterclick() {
     counter ++;
     updateCounter()
@@ -174,31 +176,31 @@ async function buyAutoclickTier7() {
         alert("Not enough!");
     }
 }
-//ends the game function//
+//game end function//
 async function endGame(upgrades, cps, multiplieruses, counter) {
     if (counter >= 1000000) {
         //inital alert with stats//
         counter = counter - 1000000;
         alert(`Game Complete!\n\nFinal Counter: ${Math.round(counter)}\nCPS: ${cps}\nUpgrades Purchased: ${upgrades}\nMultiplier Uses: ${multiplieruses}`);
-        ////end screen stuff//
-        document.body.style.backgroundColor = "white";
-        document.body.style.color = "black";
-        const endscreen = document.createElement("div");
-        endscreen.style.position = "fixed";
-        endscreen.style.inset = "0";
-        endscreen.style.display = "flex";
-        endscreen.style.alignItems = "center";
-        endscreen.style.justifyContent = "center";
-        endscreen.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
-        endscreen.style.zIndex = "9999";
-        endscreen.style.fontSize = "36px";
-        endscreen.style.textAlign = "center";
-        endscreen.style.padding = "36px";
-        endscreen.innerText = "🎉 Congratulations! You beat the game! Refresh to play again.! 🎉";
-        document.body.appendChild(endscreen);
+        //end screen stuff//
+            document.body.style.backgroundColor = "white";
+            document.body.style.color = "black";
+            const endscreen = document.createElement("div");
+            endscreen.style.position = "fixed";
+            endscreen.style.inset = "0";
+            endscreen.style.display = "flex";
+            endscreen.style.alignItems = "center";
+            endscreen.style.justifyContent = "center";
+            endscreen.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            endscreen.style.zIndex = "9999";
+            endscreen.style.fontSize = "36px";
+            endscreen.style.textAlign = "center";
+            endscreen.style.padding = "36px";
+            endscreen.innerText = "🎉 Congratulations! You beat the game! Refresh to play again.! 🎉";
+            document.body.appendChild(endscreen);
         //looping audio clapping//
         let plays = 0;
-        while (plays < 5) {
+        while (plays < 6) {
             congrats.currentTime = 0;
             congrats.play();
             await cooldown(10000);
@@ -208,7 +210,7 @@ async function endGame(upgrades, cps, multiplieruses, counter) {
         alert("Not enough!");
     }
 }
-//multiplier stuff//
+//multiplier 2x//
 async function multiplier2x() {
     cps = cps;
     counter = counter * 2;
