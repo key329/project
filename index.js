@@ -9,7 +9,7 @@ var congrats = new Audio('congrats.wav');
 //update screen/everything function//
 function updateCounter() {
     counter = Math.round(counter);
-    document.querySelector(".counter").innerHTML = "Counter: " + counter;m, 
+    document.querySelector(".counter").innerHTML = "Counter: " + counter;
     document.querySelector(".cps").innerHTML = "Per Second: " + cps;
     listUpgrades() 
     document.querySelector(".upgrades").innerHTML = "Upgrades: " + upgradelist;
@@ -211,11 +211,9 @@ async function endGame(upgrades, cps, multiplieruses, counter) {
     }
 }
 //multiplier 2x//
-async function multiplier2x() {
-    cps = cps;
-    counter = counter * 2;
-    multiplieruses = multiplieruses + 1;
-    updateCounter()
+function multiplier2x() {
+    counter *= 2;
+    multiplieruses += 1;
     if (multiplieruses > 4) {
         document.querySelector("#multiplier2x").style.display = "none";
     }
@@ -223,7 +221,7 @@ async function multiplier2x() {
 
 function buyMultiplier2x() {
     if (counter >= 500) {
-        counter = counter - 500;
+        counter -= 500;
         multiplier2x();
         updateCounter();
     } else {
